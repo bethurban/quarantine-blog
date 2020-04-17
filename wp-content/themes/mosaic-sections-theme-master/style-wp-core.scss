@@ -1,0 +1,124 @@
+///************** BEGIN WordPress CORE Styles *****/
+
+.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto;
+}
+
+.alignright {
+  margin: 5px 0 20px 20px;
+  float: right;
+}
+
+.alignleft {
+  margin: 5px 20px 20px 0;
+  float: left;
+}
+
+.aligncenter {
+  display: block;
+  margin: 5px auto;
+}
+
+a img.alignright {
+  display: inline;
+  margin: 0 0 2px 7px;
+  padding: 4px;
+  float: right;
+  //margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+  margin: 5px 20px 20px 0;
+  float: left;
+}
+
+a img.aligncenter {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wp-caption {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%; ///* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center;
+
+  .alignnone {
+    margin: 5px 20px 20px 0;
+  }
+
+  .alignleft {
+    margin: 5px 20px 20px 0;
+  }
+
+  .alignright {
+    margin: 5px 0 20px 20px;
+  }
+
+  p.wp-caption-text {
+    margin: 0;
+    padding: 0 4px 5px;
+    font-size: 11px;
+    line-height: 17px;
+  }
+
+  img {
+    width: auto;
+    max-width: 98.5%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+  }
+}
+
+article {
+  ul {
+    margin-left: 15px;
+    padding: 0 0 15px;
+    list-style: disc inside;
+
+    li {
+      padding: 0 0 0 5px;
+      list-style: outside none;
+    }
+  }
+
+  ol {
+    margin-left: 15px;
+    padding: 0 0 15px;
+    list-style: decimal inside;
+
+    li {
+      padding: 0 0 0 15px;
+      list-style-position: outside;
+    }
+  }
+
+  ul,
+  ol {
+    ul {
+      margin-left: 15px;
+      list-style: circle inside;
+    }
+
+    ol {
+      margin-left: 15px;
+      list-style: lower-latin inside;
+    }
+  }
+}
+
+// /********** END: WordPress core styles *********/

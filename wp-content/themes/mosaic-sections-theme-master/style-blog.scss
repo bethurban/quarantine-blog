@@ -1,0 +1,164 @@
+
+.blog {
+  h1,
+  h1 a {
+    font-size: 1.8rem;
+  }
+
+  h2,
+  h2 a {
+    font-size: 1.6rem;
+  }
+
+  h3,
+  h3 a {
+    font-size: 1.4rem;
+  }
+
+  h4,
+  h4 a {
+    font-size: 1.2rem;
+  }
+
+  h5,
+  h5 a {
+    font-size: 1.1rem;
+  }
+
+  h6,
+  h6 a {
+    font-size: 1rem;
+  }
+
+  article {
+    max-width: 1200px;
+  }
+
+  .post {
+    padding: 20px 0;
+  }
+
+  .date-and-title {
+    margin-bottom: 20px;
+  }
+
+  .source-logo {
+    display: inline-block;
+    width: 100px;
+    padding-bottom: 20px;
+    vertical-align: middle;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .source-logo + .entry-title,
+  .source-logo + .date-and-title {
+    display: inline-block;
+    width: calc(100% - 120px);
+    margin-left: 20px;
+    vertical-align: middle;
+  }
+
+  .post-featured-image {
+    display: inline-block;
+    width: 39%;
+    max-width: 39%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &:empty {
+      display: none;
+
+      + .post-info {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+      }
+    }
+  }
+
+  .thumbnail-included {
+    .post-info {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 60%;
+      max-width: 60%;
+      padding: 0 0 0 20px;
+    }
+  }
+
+  .structured-data {
+    display: block;
+
+    .date,
+    .post-author {
+      margin: 0 6px;
+    }
+  }
+
+  .entry-title + .structured-data {
+    margin-top: -5px;
+  }
+
+  .taxonomy {
+    .taxonomy-label {
+      margin-right: 10px;
+    }
+  }
+
+  .read-more-wrapper {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .navigation {
+    .fa,
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .fa + span,
+    span + .fa {
+      margin-left: 5px;
+    }
+
+    .title {
+      display: none;
+    }
+
+    &.pagination {
+      > span,
+      > a {
+        display: inline-block;
+        padding: 5px;
+        border: 2px solid $color-one-background;
+        border-radius: 2px;
+        background: $color-one-background;
+        color: $color-one;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 15px;
+      }
+
+      .fa {
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+
+      > a:hover,
+      .current {
+        background: $color-one;
+        color: $color-one-background;
+      }
+    }
+  }
+}

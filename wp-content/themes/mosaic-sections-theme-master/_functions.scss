@@ -1,0 +1,24 @@
+// Stringify a single-leveled list
+@function stringify-list($list: (), $separator: " ") {
+  @if $list == () {
+    @warn "The list you passed in was empty";
+    @return "";
+  }
+
+  @if length($list) == 1 {
+    @return nth($list, 1);
+  }
+
+  $string: "";
+
+  @each $value in $list {
+    $string: $string + $value + $separator;
+  }
+
+  @return $string;
+}
+
+// Calculate padding for given dimensions
+@function calculate-padding($x-dimension-ratio, $y-dimension-ratio) {
+  @return ($y-dimension-ratio / $x-dimension-ratio) * 100%;
+}

@@ -1,0 +1,269 @@
+// /* BEGIN: CSS RESET RULES */
+html,
+nav,
+a,
+abbr,
+acronym,
+address,
+area,
+b,
+bdo,
+big,
+button,
+caption,
+cite,
+code,
+col,
+colgroup,
+dd,
+del,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+i,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+map,
+object,
+ol,
+p,
+param,
+pre,
+q,
+samp,
+small,
+span,
+strong,
+sub,
+sup,
+table,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+tr,
+tt,
+ul,
+var {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+p {
+  padding: 0 0 15px;
+}
+
+table {
+  padding: 0 0 15px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+header,
+nav,
+section,
+aside,
+footer {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+hr {
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  background: none;
+}
+
+code,
+pre {
+  white-space: pre;
+}
+
+del {
+  text-decoration: line-through; // /* it's deleted text - show it as such */
+}
+
+dfn {
+  font-style: italic;
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+fieldset {
+  display: inline;
+  border: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 15px;
+  font-weight: bold;
+  line-height: normal;
+}
+
+h1,
+.h1,
+%h1 {
+  font-size: 35px;
+}
+
+h2,
+.h2,
+%h2 {
+  font-size: 25px;
+}
+
+h3,
+.h3,
+%h3 {
+  font-size: 20px;
+}
+
+h4,
+.h4,
+%h4 {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+h5,
+.h5,
+%h5 {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+h6,
+.h6,
+%h6 {
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+img {
+  width: auto;
+  height: auto;
+  border: none;
+  vertical-align: bottom;
+}
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+tt {
+  display: block;
+  margin: .5em 0;
+  padding: .5em 1em;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.portfolio ul {
+  list-style-type: none;
+}
+
+.portfolio-masonry li img {
+  width: 190px;
+  height: auto;
+  color: transparent;
+}
+
+.masonry li {
+  display: inline-block;
+}
+
+.masonry img {
+  color: transparent;
+}
+
+#lbwrap #lightbox a.close {
+  display: block;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: none;
+}
+
+//Comment out / remove the line below if you are NOT going to use Font Awesome, so the "X" character shows
+#lbwrap #lightbox a.close span {
+  display: none;
+}
+
+.skip {
+  position: absolute;
+  left: -999em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+///* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+// /* END: CSS RESET RULES */

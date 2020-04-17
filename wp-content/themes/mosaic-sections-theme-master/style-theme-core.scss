@@ -1,0 +1,2062 @@
+@import "style-theme-variables";
+@import "style-fixed-variables";
+@import "functions";
+@import "mixins";
+
+// ************* BEGIN Theme CORE styles *********
+
+// Map of section color schemes
+$section-colors: (
+        color-one:(
+                background: $color-one-background,
+                color: $color-one
+        ),
+        color-two:(
+                background: $color-two-background,
+                color: $color-two
+        ),
+        color-three:(
+                background: $color-three-background,
+                color: $color-three
+        ),
+        color-four:(
+                background: $color-four-background,
+                color: $color-four
+        ),
+        color-five:(
+                background: $color-five-background,
+                color: $color-five
+        ),
+        color-six:(
+                background: $color-six-background,
+                color: $color-six
+        ),
+        color-seven:(
+                background: $color-seven-background,
+                color: $color-seven
+        ),
+        color-eight:(
+                background: $color-eight-background,
+                color: $color-eight
+        ),
+        color-nine:(
+                background: $color-nine-background,
+                color: $color-nine
+        ),
+        color-ten:(
+                background: $color-ten-background,
+                color: $color-ten
+        ),
+        color-eleven:(
+                background: $color-eleven-background,
+                color: $color-eleven
+        ),
+        color-twelve:(
+                background: $color-twelve-background,
+                color: $color-twelve
+        ),
+        color-thirteen:(
+                background: $color-thirteen-background,
+                color: $color-thirteen
+        ),
+        color-fourteen:(
+                background: $color-fourteen-background,
+                color: $color-fourteen
+        ),
+);
+
+// Map of highlight colors
+$highlight-colors: (
+        color-fifteen:(
+                color: $color-fifteen,
+                compliment: $color-fifteen-compliment
+        ),
+        color-sixteen:(
+                color: $color-sixteen,
+                compliment: $color-sixteen-compliment
+        ),
+        color-seventeen:(
+                color: $color-seventeen,
+                compliment: $color-seventeen-compliment
+        ),
+        color-eighteen:(
+                color: $color-eighteen,
+                compliment: $color-eighteen-compliment
+        ),
+        color-nineteen:(
+                color: $color-nineteen,
+                compliment: $color-nineteen-compliment
+        ),
+        color-twenty:(
+                color: $color-twenty,
+                compliment: $color-twenty-compliment
+        ),
+        color-twenty-one:(
+                color: $color-twenty-one,
+                compliment: $color-twenty-one-compliment
+        )
+);
+
+$slide-time: .95s;
+$green: #008000;
+$red: #f00;
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  background: $white;
+  color: $black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 19px;
+  text-align: left;
+  text-shadow: $text-shadow;
+}
+
+header,
+nav,
+section,
+footer {
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+h1,
+.h1,
+h5,
+.mosaic-section h1,
+.mosaic-section .h1,
+.mosaic-section h5 {
+  font-size: 40px;
+}
+
+h2,
+.h2,
+h6,
+.mosaic-section h2,
+.mosaic-section .h2,
+.mosaic-section h6 {
+  font-size: 35px;
+}
+
+h3,
+.h3,
+.mosaic-section h3,
+.mosaic-section .h3 {
+  font-size: 20px;
+}
+
+h4,
+.h4,
+.mosaic-section h4,
+.mosaic-section .h4 {
+  font-size: 18px;
+}
+
+h1,
+.mosaic-section h1 {
+  &.non-strong {
+    font-weight: 300 !important; //scss-lint:disable ImportantRule
+  }
+
+  &.strong {
+    font-weight: 600 !important; //scss-lint:disable ImportantRule
+  }
+
+  &.semi-strong {
+    font-weight: 400 !important; //scss-lint:disable ImportantRule
+  }
+}
+
+// Horizontal Rule
+
+hr {
+  width: 100%;
+  margin: 0 0 35px;
+  padding: 20px 0 0;
+  border-bottom: 1px solid $black;
+}
+
+.headerwrapper,
+.navwrapper,
+.contentwrapper,
+.footerwrapper {
+  width: 100%;
+}
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+  background: $navigation-background;
+  color: $navigation-color;
+
+  .header-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &.nav_below_logo {
+    .logo-wrapper,
+    .nav-wrapper {
+      display: block;
+      width: auto;
+      margin: 0;
+    }
+  }
+}
+
+.admin-bar {
+  .sticky {
+    &.scrolled {
+      // this throws an SCSS-lint warning.  While in this instance this should stay, the lint config will not be changed since !important should not be used if possible
+      top: 32px !important; // scss-lint:disable ImportantRule
+    }
+  }
+}
+
+.logo-wrapper {
+  display: inline-block;
+  width: 25%;
+}
+
+.nav-wrapper,
+.logo-wrapper {
+  vertical-align: middle;
+}
+
+header {
+  display: inline-block;
+}
+
+.nav-wrapper {
+  display: inline-block;
+  width: 74%;
+  text-align: right;
+}
+
+input,
+input[type="text"],
+textarea {
+  padding: 10px;
+  border: 2px solid $light-gray;
+  font-size: inherit;
+  -webkit-appearance: none;
+}
+
+input[type="submit"] {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Gravity Form Inputs / Labels for Safari and Chrome
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+}
+
+input[type="radio"] {
+  -webkit-appearance: radio;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.button {
+  @include button();
+}
+
+.button-outline {
+  @include button(1);
+}
+
+.button-small {
+  padding: 5px 8px;
+  font-size: 1em;
+}
+
+.image-content-overlay {
+  .liner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+nav {
+  &.nav-main {
+    //margin-left: -$nav-a-padding;
+    //margin-right: -$nav-a-padding;
+  }
+
+  a {
+    @include transition(all .3s ease-in-out);
+
+    display: block;
+    padding: $nav-a-vertical-padding $nav-a-horizontal-padding;
+    color: $navigation-link-color;
+    font-size: 14px;
+
+    &:hover {
+      color: $navigation-link-hover-color;
+    }
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+
+    &.button {
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      a {
+        @include button();
+        padding: $nav-a-button-padding $nav-a-horizontal-padding;
+        text-transform: uppercase;
+      }
+    }
+
+    &:hover .sub-menu {
+      left: auto;
+      height: auto;
+      opacity: 1;
+    }
+
+    &:hover .mega-menu {
+      left: 0;
+      opacity: 1;
+    }
+
+    &:last-child .sub-menu {
+      right: 0;
+    }
+  }
+
+  @each $highlight, $colors in $highlight-colors {
+    li.button-#{$highlight} {
+      a {
+        border-color: map-get($colors, "color");
+        background: transparent;
+        color: map-get($colors, "color");
+
+        &:hover {
+          background: map-get($colors, "color");
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .sub-menu {
+    @include transition(opacity .25s);
+    display: block;
+    position: absolute;
+    // Fixes bug for hover state
+    z-index: 99;
+    top: 78px;
+    left: -999em;
+    width: 250px;
+    height: auto;
+    border: 1px solid $light-gray;
+    opacity: 0;
+    background: $navigation-background;
+    text-align: left;
+
+    li {
+      display: block;
+      width: auto;
+      // padding belongs on the clickable element, not the li
+      padding: 0;
+    }
+
+    ul {
+      display: none;
+    }
+
+    a {
+      padding: 10px;
+    }
+  }
+
+  .mega-menu {
+    li {
+      display: block;
+    }
+  }
+}
+
+.sub-menu {
+  li {
+    &:hover ul {
+      display: block;
+      top: 0;
+      left: 250px;
+      border-left: 1px solid;
+    }
+  }
+}
+
+// these ids are generated by WP, so keeping lint rule, but ignoring for these instances
+#sidebar-after_nav, // scss-lint:disable IdSelector
+.menu {
+  display: inline-block;
+}
+
+// these ids are generated by WP, so keeping lint rule, but ignoring for these instances
+#sidebar-after_nav { // scss-lint:disable IdSelector
+  ul {
+    li {
+      display: inline-block;
+    }
+
+    a {
+      display: inline-block;
+      padding: 30px $nav-a-horizontal-padding;
+    }
+  }
+}
+
+.bx-wrapper .bx-viewport {
+  left: 0;
+}
+
+.bx-controls-direction {
+  a {
+    @include transition(none);
+    color: $color-one;
+  }
+}
+
+.bx-pager.bx-default-pager {
+  a {
+    background: $color-one;
+
+    &:hover,
+    &.active {
+      background: $color-one;
+    }
+  }
+}
+
+.sub-contents {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.one-third {
+  width: $one-third;
+  max-width: $one-third;
+}
+
+.one-half {
+  width: $one-half;
+  max-width: $one-half;
+}
+
+.one-fourth {
+  width: $one-fourth;
+  max-width: $one-fourth;
+}
+
+.two-thirds {
+  width: $two-thirds;
+  max-width: $two-thirds;
+}
+
+.three-fourths {
+  width: $three-fourths;
+  max-width: $three-fourths;
+}
+
+.slide-left {
+  animation: slideFromLeft $slide-time;
+}
+
+.slide-right {
+  animation: slideFromRight $slide-time;
+}
+
+.slide-up {
+  animation: slideFromBottom $slide-time;
+}
+
+.slide-down {
+  animation: sliderFromTop $slide-time;
+}
+
+img {
+  max-width: 100%;
+}
+
+// TODO: WE CAN NOT HAVE * selector items like this! Causes issues.....
+// TODO: Secondarily, a rule like this belongs at the VERY top of the file.
+* {
+  box-sizing: border-box;
+}
+
+.top-bar {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 20px;
+  background: $darker-gray;
+  color: $white;
+
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+
+  ul li {
+    text-align: right;
+  }
+
+  .textwidget {
+    display: inline-block;
+    width: auto;
+    vertical-align: bottom;
+  }
+
+  .widgettitle {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    font-size: 100%;
+  }
+}
+
+.with-sidebar {
+  background: $white;
+}
+
+.with-sidebar-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: $white;
+
+  > aside {
+    display: inline-block;
+    width: 25%;
+    padding: 20px;
+    vertical-align: top;
+
+    &.left {
+      margin-right: 40px;
+    }
+
+    &.right {
+      margin-left: 40px;
+    }
+  }
+
+  > section {
+    display: inline-block;
+    width: calc(74% - 40px);
+    vertical-align: top;
+  }
+}
+
+.edit-section {
+  @include transition(all .2s ease-in-out);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed;
+  opacity: 0;
+
+  &-link {
+    @include transition(all .2s ease-in-out);
+    position: absolute;
+    z-index: 110;
+    top: 15px;
+    right: 1%;
+    opacity: .5;
+    color: inherit;
+    font-size: 20px;
+
+    svg {
+      -webkit-filter: drop-shadow(0 2px rgba($black, .2)); //scss-lint:disable VendorPrefix
+      filter: drop-shadow(0 2px rgba($black, .2));
+    }
+  }
+}
+
+.section-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  + .edit-section {
+    z-index: 2;
+  }
+
+  + .sub-contents {
+    z-index: 3;
+  }
+}
+
+.section-wrapper {
+  position: relative;
+}
+
+// Mosaic Home Sections
+
+.mosaic-section {
+  overflow: hidden;
+  background: $color-one-background;
+  color: $color-one;
+
+  @include headings() {
+    color: $color-one;
+    font-weight: 400;
+  }
+
+  //  Section Utility classes
+  &.two-bucket-grid {
+    .bucket-wrapper {
+      .bucket {
+        width: $one-half;
+        max-width: none;
+      }
+    }
+  }
+
+  &.four-bucket-grid {
+    .bucket-wrapper {
+      .bucket {
+        width: $one-fourth;
+        max-width: none;
+      }
+    }
+  }
+
+  ul {
+    padding-left: 15px;
+    list-style: disc outside none;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  sup,
+  sub {
+    display: inline-block;
+    height: auto;
+    margin: 0 0 0 .2em;
+    font-size: .7em;
+    line-height: normal;
+  }
+
+  sup {
+    vertical-align: top;
+  }
+
+  sub {
+    vertical-align: bottom;
+  }
+
+  a {
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .button-outline,
+  input[type="submit"] {
+    @include button(1);
+  }
+
+  input[type="submit"] {
+    display: inline-block;
+    width: auto;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .button-area {
+    margin-top: 15px;
+    padding: 15px 0;
+  }
+
+  .edit-section-link {
+    text-shadow: 0 0 10px rgba($black, .2);
+
+    svg {
+      fill: $color-one;
+    }
+  }
+
+  &:hover {
+    .edit-section {
+      opacity: .8;
+
+      &-link {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Content Slider Section
+.section-content-slider {
+  .content-sliders.sub-contents {
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .content-slider {
+    a {
+      @include border-radius(3px);
+
+      padding: 10px 15px;
+      border: 2px solid $white;
+      color: inherit;
+      text-transform: uppercase;
+
+      &:hover {
+        background: $white;
+        color: $color-two-background;
+      }
+    }
+  }
+
+  .image-wrapper {
+    display: inline-block;
+    width: 50%;
+
+    + .content-wrapper {
+      display: inline-block;
+      width: 50%;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+}
+
+// Checklist Section
+.section-checklist {
+  .checklist-info {
+    margin-bottom: 25px;
+  }
+
+  .checklist-items {
+    display: inline-block;
+    width: $one-third;
+    padding-right: 20px;
+  }
+
+  .checklist-item-wrapper {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 38px;
+  }
+
+  .checklist-icon {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+  }
+
+  .checklist-item-headline {
+    margin-bottom: 8px;
+    font-size: 1.2em;
+    line-height: 1.35em;
+  }
+
+  .checklist-image {
+    display: inline-block;
+    width: $two-thirds;
+    text-align: center;
+
+    img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// Banner Section
+.section-banner {
+  .sub-contents {
+    display: flex;
+    align-items: center;
+    padding: 40px 0 0;
+
+    &.align-top {
+      .banner-content-wrapper {
+        align-self: flex-start;
+      }
+    }
+
+    &.align-bottom {
+      .banner-content-wrapper {
+        align-self: flex-end;
+      }
+    }
+
+    &.full-width {
+      .banner-content-wrapper {
+        width: 100%;
+      }
+    }
+  }
+
+  .banner-image {
+    display: inline-block;
+    width: $one-half;
+    vertical-align: bottom;
+  }
+
+  .banner-content-wrapper {
+    display: inline-block;
+    width: $one-half;
+    padding: 0 0 2% 3%;
+  }
+}
+
+// Product Highlight Section
+
+.section-product-highlight {
+  text-align: center;
+
+  .product-highlight-info {
+    padding-bottom: 25px;
+  }
+
+  .highlight {
+    padding: 0 0 25px;
+  }
+
+  .highlight-headline {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+
+  .highlights {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .highlights-left {
+    padding-right: 10px;
+
+    &.one-third {
+      padding-left: 20px;
+    }
+  }
+
+  .highlight-image {
+    display: inline-block;
+    width: auto;
+    max-width: $one-third;
+    text-align: center;
+  }
+
+  .highlights-right {
+    padding-left: 30px;
+  }
+}
+
+// Buckets (Grid, Panel, Stats) Section
+.bucket-wrapper {
+  // Reduced because there's top-margin on buckets
+  padding-top: 10px;
+
+  // Heading gets funny padding / margins to accommodate the reduced padding of section / top margin of buckets
+  .buckets-headline {
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 0;
+  }
+
+  .bucket {
+    display: inline-block;
+    width: $one-third;
+    // Top-margin keeps them separated vertically when there's more than one row
+    margin-top: 30px;
+    padding: 0 10px;
+  }
+
+  .bucket-image {
+    text-align: center;
+  }
+
+  .bucket-info {
+    box-sizing: border-box;
+    margin: 20px 0 0;
+  }
+
+  .bucket-title {
+    margin: 15px;
+  }
+
+  .buckets-text {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .bx-wrapper {
+    .bucket {
+      // This fixes an issue with the slider version not being tall enough
+      margin-top: 0;
+    }
+
+    .bx-prev {
+      left: -50px;
+    }
+
+    .bx-next {
+      right: -50px;
+    }
+  }
+
+  .bucket-panel-title {
+    padding: 10px 0;
+    background: $color-one;
+
+    h3 {
+      display: block;
+      margin: 0;
+      color: $white;
+    }
+  }
+
+  .bucket-panel-text {
+    padding: 20px;
+    background: $white;
+
+    .button-outline {
+      border-color: $color-one-background;
+      background: $white;
+      color: $color-one-background;
+
+      &:hover {
+        border-color: $color-one;
+        background: $color-one-background;
+        color: $color-one;
+      }
+    }
+  }
+}
+
+.bucket-overlay {
+  .wrapper {
+    position: relative;
+    background: $black;
+  }
+
+  .bucket-info {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    width: 100%;
+    margin-top: 0;
+    padding: 10px;
+    transform: translateY(-50%);
+    color: $white;
+    text-align: center;
+    text-shadow: 0 0 10px rgba($black, .5);
+
+    @include headings() {
+      color: $white;
+    }
+  }
+
+  &:hover {
+    .bucket-background {
+      opacity: .55;
+    }
+  }
+
+  .bucket-title {
+    margin-top: 0;
+  }
+}
+
+.bucket-background {
+  @include transition(opacity .3s ease-in-out);
+  position: relative;
+  padding-top: $padding-3x2;
+  opacity: .75;
+}
+
+.section-bucket-carousel {
+  .section-headline {
+    margin-bottom: 15px;
+  }
+}
+
+// Contact Form Section
+.section-contact-form {
+  .form-title {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  div + div {
+    margin-top: 20px;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 15px 10px;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  input[type="text"] {
+    display: block;
+    width: 50%;
+    padding: 15px 10px;
+    border: none;
+    font-size: 1.1em;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  label {
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  .dff-text-wrapper,
+  .dff-text-area-wrapper {
+    label {
+      display: none;
+    }
+  }
+
+  .dff-submit-wrapper {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .dff-form-message {
+    padding: 8px 15px;
+    border: 5px solid $green;
+    background: $white;
+    color: $black;
+    font-weight: bold;
+  }
+
+  .acg-fb-required {
+    color: $red;
+  }
+
+  input[type="submit"],
+  button {
+    @include transition(all .3s ease-in-out);
+
+    margin-top: 20px;
+  }
+}
+
+// Callout Section
+.section-donate-callout {
+  .donate-text,
+  .donate-button {
+    vertical-align: middle;
+  }
+
+  .donate-text {
+    display: inline-block;
+    width: $two-thirds;
+  }
+
+  .donate-button {
+    display: inline-block;
+    width: $one-third;
+
+    .button-area {
+      text-align: right;
+    }
+  }
+}
+
+// Image Grid Section
+.section-image-grid {
+  .image-grid-item {
+    display: inline-block;
+    width: $one-fourth;
+    margin: 10px 0;
+    padding: 0 15px;
+    text-align: center;
+    vertical-align: middle;
+
+    .image-caption {
+      padding: 10px 0 0;
+    }
+  }
+}
+
+// Video Grid
+.section-video-grid {
+  .video {
+    display: inline-block;
+    width: $one-half;
+    padding: 10px;
+  }
+}
+
+// Image List Section
+.section-image-list {
+  .image-list-item-wrapper {
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .image {
+    display: inline-block;
+    width: $one-third;
+    padding: 15px;
+  }
+
+  .image-info {
+    display: inline-block;
+    width: $two-thirds;
+    padding: 15px;
+  }
+
+  .align-bottom {
+    .image-info {
+      align-self: flex-end;
+    }
+  }
+
+  .align-top {
+    .image-info {
+      align-self: flex-start;
+    }
+  }
+
+  .image-after-text {
+    padding: 0 15px;
+  }
+}
+
+// Event Grid Section
+.section-event-grid {
+  .event-wrapper {
+    display: inline-block;
+    width: $one-third;
+    padding: 10px;
+
+    a {
+      font-weight: normal;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .button-area {
+    text-align: center;
+  }
+
+  .event-grid-sub-headline {
+    padding-top: 15px;
+  }
+}
+
+// Split Section
+.section-split {
+  .left,
+  .right {
+    display: inline-block;
+    width: 50%;
+    padding: 30px;
+
+    @each $scheme, $colors in $section-colors {
+      &.#{$scheme} {
+        background: map-get($colors, "background");
+        color: map-get($colors, "color");
+      }
+    }
+  }
+}
+
+// Image Comparison Section
+.section-image-comparison {
+  .sub-contents {
+    max-width: $tablet;
+  }
+
+  .cd-image-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// Video Hero Section
+.section-video-hero {
+  position: relative;
+  overflow: hidden;
+
+  .video-background {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  .sub-contents {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Accordions Section
+.section-accordions {
+  .accordion {
+    padding: 5px 0;
+
+    &.open {
+      .accordion-body {
+        display: block;
+      }
+    }
+  }
+
+  .accordion-headline {
+    @include transition(all .3s ease-in-out);
+    padding: 10px 15px;
+    background: $black;
+    color: $white;
+    cursor: pointer;
+
+    h4 {
+      margin: 0;
+      vertical-align: middle;
+
+      &::after {
+        content: "\f067";
+        margin: 5px 0 0 5px;
+        float: right;
+        color: inherit;
+        font-family: FontAwesome, sans-serif;
+        font-weight: bold;
+        vertical-align: middle;
+      }
+    }
+
+    &.active {
+      h4 {
+        &::after {
+          content: "\f068";
+        }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .accordion-body {
+    display: none;
+    padding: 15px;
+    overflow: hidden;
+
+    p {
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+.section-team-grid {
+  .team-member {
+    display: inline-block;
+    width: $one-third;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .member-name {
+    margin-top: 15px;
+  }
+
+  .position,
+  .short-bio {
+    margin-bottom: 15px;
+  }
+}
+
+.has-overlay {
+  .sub-contents {
+    z-index: 3;
+    background: none;
+  }
+}
+
+@each $scheme, $colors in $section-colors {
+  @if $scheme == color-one {
+    .color-one {
+      @include headings-a {
+        color: map-get($colors, "color");
+      }
+    }
+  } @else {
+    .#{$scheme} {
+      background: map-get($colors, "background");
+      color: map-get($colors, "color");
+
+      @include headings-a {
+        color: map-get($colors, "color");
+
+        &:hover {
+          color: map-get($colors, "color");
+        }
+      }
+
+      &.button {
+        border-color: map-get($colors, "background");
+
+        &:hover {
+          border-color: map-get($colors, "background");
+          background: map-get($colors, "color");
+          color: map-get($colors, "background");
+        }
+      }
+
+      .button-outline,
+      input[type="submit"] {
+        border: 2px solid map-get($colors, "color");
+        background: transparent;
+        color: map-get($colors, "color");
+
+        &:hover {
+          border-color: map-get($colors, "color");
+          background: map-get($colors, "color");
+          color: map-get($colors, "background");
+        }
+      }
+
+      input[type="text"],
+      textarea {
+        border: 1px solid map-get($colors, "background");
+        background: $white;
+        color: $dark-gray;
+      }
+
+      .bx-controls-direction a {
+        color: map-get($colors, "color");
+      }
+
+      .bx-pager.bx-default-pager a {
+        background: map-get($colors, "color");
+
+        &:hover,
+        &.active {
+          background: map-get($colors, "color");
+        }
+      }
+
+      .edit-section {
+        border-color: map-get($colors, "color");
+
+        &-link {
+          svg {
+            fill: map-get($colors, "color");
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $color, $colors in $highlight-colors {
+  .#{$color} {
+    @include headings {
+      color: map-get($colors, "color");
+    }
+
+    .checklist-icon {
+      color: map-get($colors, "color");
+    }
+
+    &.bucket-outline {
+      .bucket-info {
+        border: 2px solid map-get($colors, "color");
+      }
+    }
+
+    .bucket-panel-title {
+      background: map-get($colors, "color");
+
+      h3 {
+        color: map-get($colors, "color-one-compliment");
+      }
+    }
+
+    .bucket-panel-text {
+      .button-outline {
+        border-color: map-get($colors, "color");
+        background: map-get($colors, "compliment");
+        color: map-get($colors, "color");
+
+        &:hover {
+          border-color: map-get($colors, "color");
+          background: map-get($colors, "color");
+          color: map-get($colors, "compliment");
+        }
+      }
+    }
+
+    .accordion-headline {
+      background: map-get($colors, "color");
+
+      h4 {
+        color: map-get($colors, "compliment");
+      }
+    }
+
+    &.open {
+      .accordion-headline {
+        background: map-get($colors, "compliment");
+
+        h4 {
+          color: map-get($colors, "color");
+        }
+      }
+    }
+  }
+}
+
+// Mobile menu toggle
+.toggler,
+.toggle {
+  display: none;
+}
+
+// Team lightbox
+.lightbox-content {
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  max-width: 900px;
+  height: auto;
+  max-height: 70vh;
+  margin: 0 auto;
+  padding: 30px;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+  background: $white;
+
+  .close {
+    background: none;
+    color: inherit;
+  }
+}
+
+.team-member-wrapper {
+  //overflow-y: auto;
+}
+
+.team-member-photo {
+  display: inline-block;
+  width: 50%;
+  padding: 0 20px;
+
+  + .team-member-info {
+    display: inline-block;
+    width: 50%;
+  }
+}
+
+.team-member-info {
+  padding: 0 20px;
+}
+
+// Mega Menu
+
+.mega-menu {
+  @include transition(opacity .25s);
+  display: none;
+  position: fixed;
+  z-index: 255555;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  text-align: left;
+
+  .mega-menu-liner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+
+  .mega-sub-menu {
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    list-style-type: none;
+
+    &.count-1,
+    &.count-2 {
+      width: 50%;
+    }
+
+    &.count-3 {
+      width: $one-third;
+    }
+
+    &.count-4 {
+      width: $one-fourth;
+    }
+
+    &.count-5 {
+      width: $one-fifth;
+    }
+  }
+
+  .menu-title {
+    font-size: 1.2em;
+  }
+
+  a {
+    padding: 5px 0;
+  }
+
+  .sub-menu {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    padding: 0 10px;
+    background: none;
+
+    li {
+      padding: 0;
+    }
+
+    a {
+      padding: 10px 20px;
+    }
+  }
+
+  @each $highlight, $colors in $highlight-colors {
+    &.#{$highlight} * {
+      color: map-get($colors, "color");
+    }
+  }
+}
+
+.mega-menu-bg {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  @each $highlight, $colors in $highlight-colors {
+    &.bg-#{$highlight} {
+      background: map-get($colors, "color");
+    }
+  }
+}
+
+// non-home page content has an article wrapper
+article {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  ul {
+    margin-left: 25px;
+    padding: 0 0 15px;
+    list-style: disc outside none;
+
+    li {
+      padding: 0 0 0 5px;
+    }
+  }
+
+  ol {
+    margin-left: 25px;
+    padding: 0 0 15px;
+
+    li {
+      padding: 0 0 0 5px;
+      list-style-position: outside;
+    }
+  }
+}
+
+.featured-hero-wrapper {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  background: $white;
+
+  img {
+    width: 100%;
+  }
+
+  .hero-title-wrapper {
+    @include transform(translateY(40%));
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    color: $white;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+aside {
+  .sidebar {
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    li + li {
+      margin-top: 10px;
+    }
+  }
+}
+
+// Masonry Gallery Tiles
+
+.gallery {
+  img {
+    max-width: 100%;
+  }
+
+  .slides {
+    div {
+      opacity: 0;
+    }
+
+    &.playing div {
+      opacity: 1;
+    }
+  }
+}
+
+.slides .item {
+  max-width: 19%;
+}
+
+.widget_acg_facebook_twitter {
+  .follow {
+    display: none;
+  }
+}
+
+// Video embed shortcode default styling
+.mst-video {
+  &:not(.showing-video) {
+    position: relative;
+    cursor: pointer;
+
+    img {
+      position: relative;
+    }
+
+    &::before {
+      content: "\f04b";
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $white;
+      font-family: FontAwesome, sans-serif;
+      font-size: 4em;
+      text-shadow: 0 0 15px rgba($black, .8);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($black, .55);
+    }
+  }
+}
+
+#sidebar-event_sidebar, // scss-lint:disable IdSelector
+#sidebar-event_taxonomy_sidebar {
+  .event_date_filter {
+    padding-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+
+    ul {
+      padding-bottom: 20px;
+
+      li + li { // scss-lint:disable SelectorDepth
+        margin: 10px 0;
+      }
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+
+  span {
+    display: block;
+    padding: 5px 0;
+  }
+}
+
+#sidebar-footer_sidebar, // scss-lint:disable IdSelector
+#sidebar-after_footer_sidebar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+  text-align: center;
+
+  .widgettitle {
+    color: $light-gray;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .menu > li {
+    padding-bottom: 10px;
+  }
+
+  > ul {
+    > li {
+      display: inline-block;
+      width: 24%;
+      text-align: left;
+
+      + li {
+        margin-left: 1%;
+      }
+    }
+
+    .sub-menu {
+      padding-left: 15px;
+
+      li { // scss-lint:disable SelectorDepth
+        padding: 5px 0;
+      }
+    }
+  }
+
+  .button-outline {
+    @include button(1, $footer-link-color, $footer-background);
+  }
+}
+
+.footerwrapper {
+  background: $footer-background;
+  color: $footer-color;
+
+  a {
+    color: $footer-link-color;
+
+    &:hover {
+      color: $footer-link-hover-color;
+    }
+  }
+}
+
+.footerbyline {
+  background: $footer-background;
+
+  .footerbyline-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1% 2%;
+    color: $footer-color;
+
+    a {
+      color: $footer-link-color;
+
+      &:hover {
+        color: $footer-link-hover-color;
+      }
+    }
+  }
+}
+
+// Event List Page
+
+.event-list {
+  aside {
+    display: inline-block;
+    width: 25%;
+  }
+
+  .event-list-inner {
+    display: inline-block;
+    width: 74%;
+    padding-left: 30px;
+  }
+
+  .event-list-title {
+    text-align: center;
+  }
+
+  .event-date {
+    display: inline-block;
+    width: 130px;
+    padding: 15px;
+    border: 1px solid $whitesmoke;
+    text-align: center;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .blog-title {
+    a {
+      color: $black;
+    }
+  }
+
+  .event-info {
+    display: inline-block;
+    width: calc(100% - 135px);
+    border: 1px solid $whitesmoke;
+
+    .event-description {
+      padding: 15px;
+    }
+
+    .event-time,
+    .event-location {
+      display: inline-block;
+    }
+
+    .event-time-divider {
+      display: inline-block;
+      padding: 0 10px;
+      color: $whitesmoke;
+
+      i { // scss-lint:disable SelectorDepth
+        line-height: inherit;
+      }
+    }
+
+    .event-excerpt {
+      margin-top: 15px;
+    }
+  }
+}
+
+// Event Single
+.event-single {
+  .entry-title {
+    display: none;
+  }
+
+  .event-single-inner {
+    display: inline-block;
+    width: 69%;
+    padding-left: 30px;
+  }
+
+  .event-featured-image {
+    padding-bottom: 20px;
+  }
+
+  .event {
+    .structured-data {
+      display: none;
+    }
+  }
+
+  .event-tag-container {
+    padding-top: 20px;
+  }
+
+  .event-tag {
+    display: inline-block;
+    padding: 5px;
+  }
+
+  aside {
+    display: inline-block;
+    width: 30%;
+
+    .event-details {
+      padding: 15px;
+      border: 1px solid $whitesmoke;
+    }
+
+    .event-single-date {
+      margin-bottom: 15px;
+      border: 1px solid $whitesmoke;
+    }
+
+    .event-single-month,
+    .event-single-day {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .event-single-month {
+      margin: 0;
+    }
+
+    .event-single-time,
+    .event-single-location {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@include keyframes(slideFromLeft) {
+  from {
+    @include transform(translateX(-100px));
+  }
+
+  to {
+    @include transform(translateX(0));
+  }
+}
+
+@include keyframes(slideFromRight) {
+  from {
+    @include transform(translateX(100px));
+  }
+
+  to {
+    @include transform(translateX(0));
+  }
+}
+
+@include keyframes(slideFromBottom) {
+  from {
+    @include transform(translateY(100px));
+  }
+
+  to {
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(slideDown) {
+  from {
+    @include transform(translateY(-110%));
+  }
+
+  to {
+    @include transform(translateY(0));
+  }
+}
+
+.parallax {
+  background-attachment: fixed !important; // scss-lint:disable ImportantRule
+}
+
+.video-modal-overlay,
+.video-modal-container {
+  display: none;
+  position: fixed;
+  z-index: 255555;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  &.open {
+    display: block;
+  }
+}
+
+.video-modal-overlay {
+  background: rgba($black, .6);
+}
+
+.video-modal-container {
+  z-index: 255556;
+  background: transparent;
+  text-align: center;
+
+  .video-modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    min-width: 400px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    border: 3px solid $black;
+    background: $black;
+    box-shadow: 0 0 20px $black;
+  }
+}
+
+@import "style-blog";
+@import "style-responsive";
+@import "style-utilities";
+@import "custom";

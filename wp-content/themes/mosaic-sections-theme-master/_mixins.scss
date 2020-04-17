@@ -1,0 +1,190 @@
+//scss-lint:disable VendorPrefix
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($box-shadow) {
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+@mixin button($outline: 0, $color: $color-one, $color-background: $color-one-background) {
+  $color-border: $color-background;
+  $color-hover: $color-background;
+  $color-border-hover: $color-background;
+  $color-background-hover: $color;
+
+  @if ($outline == 1) {
+    // these has to come first, because color gets reassigned
+    $color-border: $color;
+    $color-hover: $color-background;
+    $color-border-hover: $color;
+    $color-background-hover: $color;
+    $color: $color;
+    $color-background: transparent;
+  }
+
+  @include transition(all .3s ease-in-out);
+  @include border-radius(3px);
+  display: inline-block;
+  padding: 10px 15px;
+  border: 2px solid $color-border;
+  background: $color-background;
+  color: $color;
+  font-size: 1.1em;
+  font-weight: normal;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-border-hover;
+    background: $color-background-hover;
+    color: $color-hover;
+    // scss-lint:disable ImportantRule
+    text-decoration: none !important;
+  }
+}
+
+@mixin mosaic-button($border-color, $border-thickness, $border-radius, $background-color, $color) {
+  background: $background-color;
+  border: $border-thickness solid $border-color;
+  border-radius: $border-radius;
+  color: $color;
+
+  &:hover {
+    background: $border-color;
+    color: $background-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+@mixin headings() {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @content;
+  }
+}
+
+@mixin headings-a() {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a:not(.button):not(.button-outline) {
+    @content;
+  }
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-o-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin new-header-styles($headers: (h1, h2, h3, h4, h5, h6)) {
+  @each $header in $headers {
+    #{$header},
+    .#{$header},
+    .mosaic-section #{$header},
+    .mosaic-section .#{$header} {
+      @content;
+    }
+  }
+}
+
+@mixin set-button-styles() {
+  // scss-lint:disable IdSelector
+  .button,
+  .button-outline,
+  .mosaic-section .button,
+  .mosaic-section .button-outline,
+  .mosaic-section input[type="submit"],
+  .mosaic-section input[type="button"],
+  #sidebar-footer_sidebar .button,
+  #sidebar-footer_sidebar .button-outline,
+  #sidebar-after_footer_sidebar .button,
+  #sidebar-after_footer_sidebar .button-outline {
+    @content;
+  }
+}
+
+@mixin placeholder() {
+  // scss-lint:disable VendorPrefix
+  // scss-lint:disable PseudoElement
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+}
+
+@mixin font-rem($font-size, $line-height: $font-size, $important: false) {
+  // scss-lint:disable DuplicateProperty
+  // scss-lint:disable ImportantRule
+
+  @if $important {
+    font-size: $font-size !important;
+    font-size: ($font-size / 16px) * 1rem !important;
+
+    @if ($line-height > 0) {
+      line-height: $line-height !important;
+      line-height: ($line-height / 16px) * 1rem !important;
+    }
+  } @else {
+    font-size: $font-size;
+    font-size: ($font-size / 16px) * 1rem;
+
+    @if ($line-height > 0) {
+      line-height: $line-height;
+      line-height: ($line-height / 16px) * 1rem;
+    }
+  }
+}

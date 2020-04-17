@@ -1,0 +1,114 @@
+// BEGIN: Utility classes.  Note the use of !important, so can override any built-in styles on the specified elements
+// scss-lint:disable ImportantRule
+
+// creating .margin-bottom, .margin-top, .padding-bottom, etc. utility classes
+// pattern is: mb-1em = 1em, 5em = .5em, 75em = .75em
+// Moving towards a pattern like described here: https://getbootstrap.com/docs/4.0/utilities/spacing/
+$margins: (
+        0: 0,
+        25em: .25em,
+        5em: .5em,
+        75em: .75em,
+        1em: 1em,
+        15em: 1.5em,
+        2em: 2em,
+        auto: auto
+);
+
+$sides: (
+        top: t,
+        right: r,
+        bottom: b,
+        left: l
+);
+
+@each $name, $em in $margins {
+  @each $side, $abbr in $sides {
+    .m#{$abbr}-#{$name} {
+      margin-#{$side}: unquote("#{$em}") !important;
+    }
+
+    .p#{$abbr}-#{$name} {
+      padding-#{$side}: unquote("#{$em}") !important;
+    }
+  }
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+//Column Short Code Styles
+.row {
+  > p {
+    width: 100%;
+  }
+}
+
+// div.inline-contents shortcode styles
+.inline-contents {
+  * {
+    display: inline-block !important;
+    margin-bottom: 0 !important;
+    vertical-align: baseline;
+  }
+}
+
+.col,
+[class*="col-"] {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: left;
+  vertical-align: top;
+}
+
+.col-1 {
+  display: block;
+  margin: 0 auto;
+}
+
+.col-2 {
+  width: 47%;
+}
+
+.col-3 {
+  width: 30%;
+}
+
+.col-4 {
+  width: 21%;
+}
+
+.col-one-third {
+  width: 30%;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.col-two-thirds {
+  width: 69%;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

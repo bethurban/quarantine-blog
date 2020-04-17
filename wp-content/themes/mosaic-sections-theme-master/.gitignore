@@ -1,0 +1,17 @@
+# Intentionally ignored files
+custom.scss
+style-theme-variables.scss
+images/logo.png
+js/custom.js
+.DS_Store
+
+# Patterns
+*.map
+*.swp
+*.css
+*.sass-cache
+
+# Excluded files
+!style.css
+!css/*.css
+!font-awesome/*/*.css
